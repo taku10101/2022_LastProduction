@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>Lostbelt No.1</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slide.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'slick/slick-theme.css' %}"/>
+
+  </head>
+  <body>
+    <header>
+
+      <nav class="top_nav">
+        <ul>
+          <figure class="icon"><img src="{% static 'imges/icon_1.png' %}" alt="ロゴ画像"></figure>
+          <li><a href= "{% url 'myapp:top' %}">Top</a></li>
+
+          <li class="has-child"><a href="#">TimeLine</a>
+            <ul>
+            <li><a href="{% url 'myapp:chapter1' %}">Lostbelt No.1</a></li>
+            <li><a href="{% url 'myapp:chapter2' %}">Lostbelt No.2</a></li>
+            <li><a href="{% url 'myapp:chapter3' %}">Lostbelt No.3</a></li>
+            <li><a href="{% url 'myapp:chapter4' %}">Lostbelt No.4</a></li>
+
+          </ul>
+          <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+          </li>
+          </ul>
+        </nav>
+      </div>
+        </header>
+        
+      <h1>2部2章</h1>
+      <div id="top_img">
+        <ul class="slider">
+          <li><img src="{% static 'imges/slide_2_1.png' %}" alt="2章"></li>
+          <li><img src="{% static 'imges/slide_2_2.png' %}" alt="2章"></li>
+          <li><img src="{% static 'imges/slide_2_3.png' %}" alt="2章"></li>
+          <li><img src="{% static 'imges/slide_2_4.png' %}" alt="2章"></li>
+        </ul>
+        </div>
+      <main class="tl_main">        
+
+
+      
+
+        <div class="concept">
+          <p class="title">
+            無間氷焔世紀 ゲッテルデメルング<br>[ 消えぬ炎の快男児 ]</p>
+          <p>魔術世界における三大組織の一つ、</p>
+          <p>原初にして最後の“壁”とされる彷徨海バルトアンデルス。</p> 
+          <p>文明による魔術の進歩･変化を認めず西暦以前の神秘</p>
+          <p>―――神代の魔術のみを絶対原則とし、今の人間社会とは相容れない魔術棟。</p> 
+          <p>シャドウ･ボーダーに届いた、送り主不明の通信は、彼の地への座標を指し示す。</p> 
+          <p>確証のない不確かな情報を頼りに、彼らは次の目的地として、</p> 
+          <p>北海に隠された神代の島を目指すのだが―――</p>
+        </p> 
+        </div>
+
+
+    </div>
+
+    {% for obj in object_list %}
+
+    <div class="TL_post">
+      <div class="tl_user">
+        <img src="{% static 'imges/icon_3.png' %}" alt="アイコン">
+        <p> {{obj.user}} </p>
+      </div>
+
+      <div class="tl_img">
+      {% if obj.post_img %}
+        <img src="/{{ obj.post_img }}" alt="投稿画像">
+      </div>
+      {% endif %} 
+      <div class="tl_btn">
+
+
+        {% if request.user in obj.like2.all %}
+        <a href="{% url 'myapp:like2' obj.pk %}" tabindex="-1"  aria-disabled="true"><img  src="{% static 'imges/hart2.png' %}" type=value  alt="ハート">     </a>{{obj.like2.count}}
+        {% else %}
+        <a href="{% url 'myapp:like2' obj.pk %}" tabindex="-1"  aria-disabled="true"> <img  src="{% static 'imges/hart.png' %}" type=value  alt="ハート"></a>{{obj.like2.count}}
+        {% endif %} 
+        </div>
+        <div class="tl_txt">
+        <p> {{obj.post_txt}} </p> 
+      </div>
+    </div>
+    {%endfor%}
+
+
+
+
+
+
+
+      </main>
+    <a class="pagetop" href="#"><div class="pagetop_arrow"></div></a>
+
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="{% url 'myapp:top' %}">Top</a></li>
+          <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+        </ul>
+        <p>2023 &copy; Copyright Hiramastu Takumi All rights reserved</p>
+      </nav> 
+    </footer>
+  
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script> 
+    <script src="{% static 'js/slide.js' %}"></script>
+
+
+  </script>
+
+  </body>
+
+</html>

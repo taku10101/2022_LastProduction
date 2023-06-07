@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>プロフィール</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+
+  </head>
+
+  <body>
+    <header>
+
+      <nav class="top_nav">
+        <ul>
+          <figure class="icon"><img src="{% static 'imges/icon_1.png' %}" alt="ロゴ画像"></figure>
+          <li><a href= "{% url 'myapp:top' %}">Top</a></li>
+
+          <li class="has-child"><a href="#">TimeLine</a>
+            <ul>
+            <li><a href="{% url 'myapp:chapter1' %}">Lostbelt No.1</a></li>
+            <li><a href="{% url 'myapp:chapter2' %}">Lostbelt No.2</a></li>
+            <li><a href="{% url 'myapp:chapter3' %}">Lostbelt No.3</a></li>
+            <li><a href="{% url 'myapp:chapter4' %}">Lostbelt No.4</a></li>
+
+          </ul>
+          <li><a href="{% url 'myapp:post' %}">Post</a></li>
+          <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+          </li>
+          </ul>
+        </nav>
+      </div>
+        </header>
+
+<div class="wrap">
+
+  <h1>プロフィール</h1>
+
+
+      <div id="profile_header">
+        <figure>
+        <img src="{% static 'imges/icon_3.png' %}" alt="アイコン">
+        </figure>
+        <span>{{user}}</span>
+      </div>
+
+      <div class="tl_post_btn">
+        <a href="{% url 'myapp:post' %}"><button>投稿</button></a>
+        <a href="{% url 'myapp:search' %}"><button>検索</button></a>
+        
+      </div>
+
+
+    </div>
+    </main>
+    <a class="pagetop" href="#"><div class="pagetop_arrow"></div></a>
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="{% url 'myapp:top' %}">Top</a></li>
+        <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+        </ul>
+        <p>2023 &copy; Copyright Hiramastu Takumi All rights reserved</p>
+      </nav> 
+    </footer>
+      
+  </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>ログイン</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+
+  </head>
+  <body>
+    
+    <header>
+  
+    </header>
+    <div class="main_bar">
+        <figure class="bar_fig">
+          <img src="{%static 'imges/bar.jpg' %}" alt="ロゴ">
+        </figure>
+
+    </div>
+
+
+      <div class="login"> 
+        <h2>ログイン</h2>
+        <form method="post" action="{% url 'myapp:Login' %}">
+          {% csrf_token %}
+          
+          <label for="userid">ユーザーID:</label>
+          <input type="text" name="userid">
+          <label for="password">パスワード：</label>
+          <input type="password" name="password">
+      
+          <input type="submit" class="btn" value="Login">
+      </form>
+    </div>
+          
+  </body>
+
+</html>

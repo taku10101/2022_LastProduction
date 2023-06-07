@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>投稿結果</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+
+  </head>
+<body>
+  <header>
+
+    <nav class="top_nav">
+      <ul>
+        <figure class="icon"><img src="{% static 'imges/icon_1.png' %}" alt="ロゴ画像"></figure>
+        <li><a href= "{% url 'myapp:top' %}">Top</a></li>
+
+        <li class="has-child"><a href="#">TimeLine</a>
+          <ul>
+          <li><a href="{% url 'myapp:chapter1' %}">Lostbelt No.1</a></li>
+          <li><a href="{% url 'myapp:chapter2' %}">Lostbelt No.2</a></li>
+          <li><a href="{% url 'myapp:chapter3' %}">Lostbelt No.3</a></li>
+          <li><a href="{% url 'myapp:chapter4' %}">Lostbelt No.4</a></li>
+
+        </ul>
+        <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+        <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+        <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+        </li>
+        </ul>
+      </nav>
+    </div>
+      </header>
+<div class="wrap">
+
+    <h1>投稿完了</h1>
+
+    <main>
+      <div id="result">
+        
+        <p>投稿が完了しました。</p>
+
+        <div id="result_btn">
+          <a href="{% url 'myapp:chapter2' %}">
+            <button>戻る</button>
+          </a>
+        </div>
+      </div>
+      
+
+    </main>
+<a class="pagetop" href="#"><div class="pagetop_arrow"></div></a>
+
+</div>
+
+<footer>
+  <nav>
+    <ul>
+      <li><a href="{% url 'myapp:top' %}">Top</a></li>
+      <li><a href="{% url 'myapp:post' %}">Post</a></li>
+      <li><a href="{% url 'myapp:search' %}">Search</a></li>
+      <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+      <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+    </ul>
+    <p>2023 &copy; Copyright Hiramastu Takumi All rights reserved</p>
+  </nav> 
+</footer>
+    </div>
+</body>
+
+</html>

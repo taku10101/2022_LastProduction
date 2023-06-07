@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>Lostbelt No.1</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slide.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'slick/slick-theme.css' %}"/>
+
+  </head>
+  <body>
+    <header>
+
+      <nav class="top_nav">
+        <ul>
+          <h1 class="icon"><img src="{% static 'imges/icon_1.png' %}" alt="ロゴ画像"></h1>
+          <li><a href= "{% url 'myapp:top' %}">Top</a></li>
+
+          <li class="has-child"><a href="#">TimeLine</a>
+            <ul>
+            <li><a href="{% url 'myapp:chapter1' %}">Lostbelt No.1</a></li>
+            <li><a href="{% url 'myapp:chapter2' %}">Lostbelt No.2</a></li>
+            <li><a href="{% url 'myapp:chapter3' %}">Lostbelt No.3</a></li>
+            <li><a href="{% url 'myapp:chapter4' %}">Lostbelt No.4</a></li>
+
+          </ul>
+          <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+          </li>
+          </ul>
+        </nav>
+      </div>
+        </header>
+        
+      <h1>2部3章</h1>
+      <div id="top_img">
+        <ul class="slider">
+          <li><img src="{% static 'imges/slide_3_1.png' %}" alt="3章"></li>
+          <li><img src="{% static 'imges/slide_3_2.png' %}" alt="3章"></li>
+          <li><img src="{% static 'imges/slide_3_3.png' %}" alt="3章"></li>
+          <li><img src="{% static 'imges/slide_3_4.png' %}" alt="3章"></li>
+        </ul>
+        </div>
+      <main class="tl_main">        
+
+
+      
+
+        <div class="concept">
+          <p class="title">人智統合真国 シン<br>[ 紅の月下美人 ]</p>
+
+          <p>新たな基地を手にしたカルデアを襲った暗殺者の毒牙。</p>
+          <p>命の危機に瀕した2人を救うべく、解毒薬作成の手がかりを求め一</p>
+          <p>行は第3の異聞帯へと向かう。</p>
+          <p>そこは国家間の争いを終了させ、永世の平和を獲得した天下泰平の世だった</p>
+          <p>過酷さはなく、悲壮さもなく、また脆弱さもない理想の統治。</p>
+          <p>穏やかな時間が流れ、人々は何一つ不自由のない生活を送っていた。だが―――</p>
+          
+          
+        </div>
+      </div>
+
+
+</div>
+
+{% for obj in object_list %}
+
+<div class="TL_post">
+  <div class="tl_user">
+    <img src="{% static 'imges/icon_3.png' %}" alt="アイコン">
+    <p> {{obj.user}} </p>
+  </div>
+
+  <div class="tl_img">
+  {% if obj.post_img %}
+    <img src="/{{ obj.post_img }}" alt="投稿画像">
+  </div>
+  {% endif %} 
+  <div class="tl_btn">
+    {% if request.user in obj.like3.all %}
+    <a href="{% url 'myapp:like3' obj.pk %}" tabindex="-1"  aria-disabled="true"><img  src="{% static 'imges/hart2.png' %}" type=value  alt="ハート">     </a>{{obj.like3.count}}
+    {% else %}
+    <a href="{% url 'myapp:like3' obj.pk %}" tabindex="-1"  aria-disabled="true"> <img  src="{% static 'imges/hart.png' %}" type=value  alt="ハート"></a>{{obj.like3.count}}
+    {% endif %}
+    </div>
+    <div class="tl_txt">
+    <p> {{obj.post_txt}} </p> 
+  </div>
+</div>
+{%endfor%}
+
+
+
+
+
+
+
+
+      </main>
+    <a class="pagetop" href="#"><div class="pagetop_arrow"></div></a>
+
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="{% url 'myapp:top' %}">Top</a></li>
+          <li><a href="{% url 'myapp:post' %}">Post</a></li>
+        <li><a href="{% url 'myapp:search' %}">Search</a></li>
+          <li><a href="{% url 'myapp:profile' %}">Profile</a></li>
+          <li><a href="{% url 'myapp:Logout' %}">Logout</a></li>
+        </ul>
+        <p>2023 &copy; Copyright Hiramastu Takumi All rights reserved</p>
+      </nav> 
+    </footer>
+  
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script> 
+    <script src="{% static 'js/slide.js' %}"></script>
+
+
+  </script>
+
+  </body>
+
+</html>

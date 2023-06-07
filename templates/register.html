@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <title>登録</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+
+  
+</head>
+
+<body>
+  
+  <header>
+    
+  </header>
+  
+  {% if AccountCreate %}
+  <div class="main_bar">
+    <figure class="bar_fig">
+      <img src="{%static 'imges/bar.jpg' %}" alt="ロゴ">
+    </figure>
+  </div>
+  <div class="register">
+  <h2>登録完了!</h2>
+  <div id="lo">
+  <a href="{% url 'myapp:Login' %}">"ログインページへ"</a> 
+  </div>
+  </div>
+
+
+
+{% else %}
+  <div class="main_bar">
+    <figure class="bar_fig">
+      <img src="{%static 'imges/bar.jpg' %}" alt="ロゴ">
+    </figure>
+  </div>
+
+  <div class="register">
+    <form method="post"  enctype="multipart/form-data">
+    <h2>新規登録</h2>   {% csrf_token %}
+
+      {{ account_form.as_p }}
+
+
+
+    <input class="btn" type="submit" name="" value="登録">
+    </form>
+    </div>
+    
+{%endif%}
+    
+    </body>
+  </html>
+  
+</body>
+</html>
+
